@@ -1,703 +1,320 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>NovaMix | Importados & Tecnologia</title>
+    <title>Produtos Importados</title>
 
     <style>
         * {
-            margin: 0;
-            padding: 0;
             box-sizing: border-box;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        :root {
-            --azul: #2563eb;
-            --azul-escuro: #111827;
-            --roxo: #7c3aed;
-            --roxo-claro: #a855f7;
-            --fundo: #f5f7ff;
-            --branco: #ffffff;
-            --cinza: #6b7280;
-            --verde: #16a34a;
-            --vermelho: #dc2626;
         }
 
         body {
-            background: var(--fundo);
-            color: #111827;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f5f5;
+            color: #222;
         }
 
-        /* =========================
-           HEADER
-        ========================= */
-
         header {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background: linear-gradient(135deg, #111827, #312e81, #2563eb);
+            background: #111;
             color: white;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, .15);
+            padding: 25px 15px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0 0 8px;
+            font-size: 32px;
+        }
+
+        header p {
+            margin: 0;
+            color: #ddd;
         }
 
         .topo {
-            max-width: 1250px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: white;
+            padding: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .controles {
+            max-width: 1200px;
             margin: auto;
-            padding: 18px 20px;
             display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 20px;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
-        .logo {
-            font-size: 27px;
-            font-weight: 900;
-            white-space: nowrap;
-        }
-
-        .logo span {
-            color: #a78bfa;
-        }
-
-        .busca {
-            flex: 1;
-            max-width: 600px;
-            position: relative;
-        }
-
-        .busca input {
-            width: 100%;
-            padding: 14px 50px 14px 18px;
-            border: none;
-            border-radius: 30px;
-            outline: none;
+        .controles input,
+        .controles select {
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
             font-size: 15px;
         }
 
-        .icone-busca {
-            position: absolute;
-            right: 18px;
-            top: 11px;
-            font-size: 20px;
+        .controles input {
+            width: 300px;
         }
-
-        .acoes {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-
-        .btn-carrinho {
-            border: 0;
-            background: white;
-            color: #312e81;
-            padding: 12px 18px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: bold;
-            position: relative;
-        }
-
-        #contadorCarrinho {
-            position: absolute;
-            right: -5px;
-            top: -7px;
-            background: #ef4444;
-            color: white;
-            width: 22px;
-            height: 22px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-        }
-
-        /* =========================
-           CATEGORIAS
-        ========================= */
 
         .categorias {
-            background: white;
-            border-bottom: 1px solid #e5e7eb;
-        }
-
-        .categorias-container {
-            max-width: 1250px;
-            margin: auto;
-            padding: 12px 20px;
+            max-width: 1200px;
+            margin: 20px auto;
             display: flex;
             gap: 10px;
-            overflow-x: auto;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 0 15px;
         }
 
-        .categoria {
-            border: 1px solid #ddd6fe;
-            background: white;
-            color: #4c1d95;
-            padding: 9px 18px;
-            border-radius: 25px;
-            cursor: pointer;
-            white-space: nowrap;
-            transition: .2s;
-        }
-
-        .categoria:hover,
-        .categoria.ativa {
-            background: linear-gradient(135deg, var(--azul), var(--roxo));
-            color: white;
-            border-color: transparent;
-        }
-
-        /* =========================
-           HERO
-        ========================= */
-
-        .hero {
-            max-width: 1250px;
-            margin: 25px auto;
-            padding: 0 20px;
-        }
-
-        .banner {
-            min-height: 330px;
-            border-radius: 25px;
-            padding: 55px;
-            display: flex;
-            align-items: center;
-
-            background:
-                radial-gradient(
-                    circle at 90% 20%,
-                    rgba(168, 85, 247, .8),
-                    transparent 30%
-                ),
-                linear-gradient(
-                    120deg,
-                    #111827,
-                    #312e81,
-                    #2563eb
-                );
-
-            color: white;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .banner::after {
-            content: "✦";
-            position: absolute;
-            right: 12%;
-            bottom: -50px;
-            font-size: 300px;
-            color: rgba(255, 255, 255, .07);
-        }
-
-        .banner-texto {
-            max-width: 650px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .banner h1 {
-            font-size: clamp(35px, 5vw, 62px);
-            line-height: 1;
-            margin-bottom: 18px;
-        }
-
-        .banner h1 span {
-            color: #c4b5fd;
-        }
-
-        .banner p {
-            color: #e5e7eb;
-            font-size: 18px;
-            margin-bottom: 25px;
-            line-height: 1.6;
-        }
-
-        .btn-banner {
-            display: inline-block;
-            padding: 14px 25px;
-            background: white;
-            color: #312e81;
-            border-radius: 12px;
-            font-weight: bold;
-            cursor: pointer;
+        .categorias button {
             border: none;
+            background: #222;
+            color: white;
+            padding: 10px 18px;
+            border-radius: 20px;
+            cursor: pointer;
         }
 
-        /* =========================
-           BENEFÍCIOS
-        ========================= */
-
-        .beneficios {
-            max-width: 1250px;
-            margin: 10px auto 40px;
-            padding: 0 20px;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
+        .categorias button:hover {
+            background: #444;
         }
 
-        .beneficio {
-            background: white;
-            padding: 20px;
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, .05);
+        .promocao {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 18px;
+            background: #111;
+            color: white;
+            border-radius: 12px;
+            text-align: center;
         }
 
-        .beneficio-icon {
-            font-size: 30px;
-        }
-
-        .beneficio strong {
-            display: block;
-            margin-bottom: 4px;
-        }
-
-        .beneficio small {
-            color: var(--cinza);
-        }
-
-        /* =========================
-           PRODUTOS
-        ========================= */
-
-        .container {
-            max-width: 1250px;
-            margin: auto;
-            padding: 10px 20px 50px;
-        }
-
-        .titulo-secao {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin: 20px 0;
-            gap: 15px;
-        }
-
-        .titulo-secao h2 {
-            font-size: 28px;
-        }
-
-        .ordenacao {
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            background: white;
+        .promocao strong {
+            font-size: 24px;
         }
 
         .produtos {
+            max-width: 1200px;
+            margin: 20px auto 100px;
+            padding: 0 15px;
+
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 20px;
         }
 
         .produto {
             background: white;
-            border-radius: 18px;
+            border-radius: 14px;
             overflow: hidden;
-            box-shadow: 0 4px 18px rgba(15, 23, 42, .07);
-            transition: .25s;
-            border: 1px solid #eef0f6;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.12);
+            transition: transform 0.2s;
             position: relative;
         }
 
         .produto:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(37, 99, 235, .15);
+            transform: translateY(-4px);
         }
 
-        .produto-img {
-            height: 240px;
-            background: #f8fafc;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .produto-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            padding: 12px;
-            transition: .3s;
-        }
-
-        .produto:hover img {
-            transform: scale(1.06);
-        }
-
-        .produto-info {
-            padding: 16px;
-        }
-
-        .categoria-produto {
-            color: var(--roxo);
-            font-size: 12px;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-
-        .produto h3 {
-            margin: 7px 0;
-            font-size: 16px;
-            min-height: 38px;
-        }
-
-        .estrelas {
-            color: #f59e0b;
-            font-size: 14px;
-        }
-
-        .preco-antigo {
-            color: #9ca3af;
-            text-decoration: line-through;
-            font-size: 13px;
-            margin-top: 8px;
-        }
-
-        .preco {
-            color: #111827;
-            font-size: 23px;
-            font-weight: 900;
-            margin: 3px 0 12px;
-        }
-
-        .pix {
-            color: var(--verde);
-            font-size: 12px;
-            font-weight: bold;
-        }
-
-        .btn-comprar {
-            width: 100%;
-            border: none;
-            padding: 12px;
-            border-radius: 10px;
-            color: white;
-            background: linear-gradient(135deg, var(--azul), var(--roxo));
-            cursor: pointer;
-            font-weight: bold;
-            margin-top: 12px;
-            transition: .2s;
-        }
-
-        .btn-comprar:hover {
-            filter: brightness(1.1);
-        }
-
-        .badge {
+        .desconto {
             position: absolute;
             top: 12px;
             left: 12px;
-            background: #ef4444;
+            background: #d60000;
             color: white;
-            padding: 5px 9px;
-            border-radius: 7px;
-            font-size: 11px;
+            padding: 7px 10px;
+            border-radius: 6px;
             font-weight: bold;
             z-index: 2;
         }
 
-        /* =========================
-           CARRINHO
-        ========================= */
-
-        .overlay {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, .55);
-            z-index: 1999;
+        .produto img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            display: block;
         }
 
-        .overlay.ativo {
-            display: block;
+        .info {
+            padding: 18px;
+        }
+
+        .categoria {
+            font-size: 13px;
+            color: #777;
+            margin-bottom: 5px;
+        }
+
+        .produto h2 {
+            margin: 5px 0 10px;
+            font-size: 19px;
+        }
+
+        .descricao {
+            color: #666;
+            font-size: 14px;
+            min-height: 40px;
+        }
+
+        .preco-antigo {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 15px;
+            margin-top: 12px;
+        }
+
+        .preco {
+            color: #111;
+            font-size: 25px;
+            font-weight: bold;
+            margin: 5px 0 15px;
+        }
+
+        .botao {
+            width: 100%;
+            border: none;
+            background: #111;
+            color: white;
+            padding: 13px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .botao:hover {
+            background: #333;
         }
 
         .carrinho {
             position: fixed;
-            z-index: 2000;
-            top: 0;
-            right: -450px;
-            width: min(450px, 100%);
-            height: 100vh;
-            background: white;
-            transition: .3s;
-            display: flex;
-            flex-direction: column;
-            box-shadow: -10px 0 40px rgba(0, 0, 0, .2);
-        }
-
-        .carrinho.aberto {
-            right: 0;
-        }
-
-        .carrinho-topo {
-            padding: 20px;
-            background: linear-gradient(135deg, #111827, #312e81);
+            right: 20px;
+            bottom: 20px;
+            background: #111;
             color: white;
+            padding: 15px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            z-index: 200;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            font-weight: bold;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.65);
+            z-index: 300;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+        }
+
+        .modal-conteudo {
+            background: white;
+            width: 100%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+            border-radius: 15px;
+            padding: 25px;
+        }
+
+        .modal-topo {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .fechar {
-            border: none;
-            background: rgba(255, 255, 255, .15);
-            color: white;
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
+            font-size: 30px;
             cursor: pointer;
-            font-size: 18px;
-        }
-
-        .itens-carrinho {
-            flex: 1;
-            overflow-y: auto;
-            padding: 15px;
         }
 
         .item-carrinho {
+            border-bottom: 1px solid #ddd;
+            padding: 15px 0;
             display: flex;
-            gap: 12px;
-            padding: 12px 0;
-            border-bottom: 1px solid #eee;
+            justify-content: space-between;
+            gap: 10px;
         }
 
-        .item-carrinho img {
-            width: 70px;
-            height: 70px;
-            object-fit: contain;
-            border-radius: 10px;
-            background: #f5f5f5;
-        }
-
-        .item-info {
-            flex: 1;
-        }
-
-        .item-info h4 {
-            font-size: 14px;
-            margin-bottom: 7px;
-        }
-
-        .item-preco {
-            color: var(--roxo);
-            font-weight: bold;
-        }
-
-        .quantidade {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: 8px;
-        }
-
-        .quantidade button {
-            width: 25px;
-            height: 25px;
+        .item-carrinho button {
+            background: #d60000;
             border: none;
-            background: #eef2ff;
-            color: #312e81;
+            color: white;
+            padding: 6px 10px;
             border-radius: 5px;
             cursor: pointer;
         }
 
-        .remover {
-            color: var(--vermelho);
-            border: none;
-            background: none;
-            cursor: pointer;
-            margin-top: 7px;
-            font-size: 12px;
-        }
-
-        .carrinho-vazio {
-            text-align: center;
-            padding: 60px 20px;
-            color: var(--cinza);
-        }
-
-        .carrinho-vazio div {
-            font-size: 55px;
-            margin-bottom: 15px;
-        }
-
-        .carrinho-rodape {
-            padding: 18px;
-            border-top: 1px solid #eee;
-            background: #fafafa;
-        }
-
-        .subtotal {
-            display: flex;
-            justify-content: space-between;
-            font-size: 20px;
+        .total {
+            font-size: 22px;
             font-weight: bold;
-            margin-bottom: 14px;
+            margin: 20px 0;
         }
 
-        .btn-finalizar,
-        .btn-compartilhar {
+        .whatsapp {
             width: 100%;
-            padding: 13px;
+            background: #25D366;
             border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            font-weight: bold;
-            margin-top: 8px;
-        }
-
-        .btn-finalizar {
-            background: #16a34a;
             color: white;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
         }
 
-        .btn-compartilhar {
-            background: #ede9fe;
-            color: #5b21b6;
+        .vazio {
+            text-align: center;
+            grid-column: 1 / -1;
+            padding: 50px;
+            color: #777;
         }
-
-        /* =========================
-           FOOTER
-        ========================= */
 
         footer {
-            background: #111827;
+            background: #111;
             color: white;
-            padding: 45px 20px;
-            margin-top: 20px;
+            text-align: center;
+            padding: 25px;
         }
 
-        .footer-container {
-            max-width: 1250px;
-            margin: auto;
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 30px;
-        }
-
-        footer h3 {
-            margin-bottom: 15px;
-        }
-
-        footer p,
-        footer li {
-            color: #9ca3af;
-            line-height: 1.8;
-            list-style: none;
-        }
-
-        .copyright {
-            max-width: 1250px;
-            margin: 35px auto 0;
-            padding-top: 20px;
-            border-top: 1px solid #374151;
-            color: #9ca3af;
-            font-size: 13px;
-        }
-
-        /* =========================
-           RESPONSIVO
-        ========================= */
-
-        @media (max-width: 1000px) {
-
+        @media (max-width: 900px) {
             .produtos {
-                grid-template-columns: repeat(3, 1fr);
-            }
-
-            .beneficios {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
 
-        @media (max-width: 750px) {
-
-            .topo {
-                flex-wrap: wrap;
-            }
-
-            .logo {
-                font-size: 23px;
-            }
-
-            .busca {
-                order: 3;
-                flex-basis: 100%;
-            }
-
-            .banner {
-                padding: 35px 25px;
-                min-height: 300px;
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 25px;
             }
 
             .produtos {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
-            }
-
-            .produto-img {
-                height: 190px;
-            }
-
-            .produto-info {
-                padding: 12px;
-            }
-
-            .produto h3 {
-                font-size: 14px;
-            }
-
-            .preco {
-                font-size: 19px;
-            }
-
-            .beneficios {
                 grid-template-columns: 1fr;
             }
 
-            .footer-container {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        @media (max-width: 480px) {
-
-            .produtos {
-                grid-template-columns: repeat(2, 1fr);
+            .produto img {
+                height: 300px;
             }
 
-            .produto-img {
-                height: 160px;
+            .controles input {
+                width: 100%;
             }
 
-            .titulo-secao {
-                align-items: flex-start;
-                flex-direction: column;
-            }
-
-            .footer-container {
-                grid-template-columns: 1fr;
-            }
-
-            .banner h1 {
-                font-size: 38px;
+            .controles select {
+                width: 100%;
             }
         }
     </style>
@@ -705,1366 +322,675 @@
 
 <body>
 
-    <!-- =========================
-         HEADER
-    ========================= -->
+<header>
+    <h1>🛍️ Produtos Importados</h1>
+    <p>Produtos selecionados com preços especiais</p>
+</header>
 
-    <header>
+<div class="topo">
+    <div class="controles">
 
-        <div class="topo">
+        <input
+            type="text"
+            id="pesquisa"
+            placeholder="🔎 Buscar produto..."
+            oninput="mostrarProdutos()"
+        >
 
-            <div class="logo">
-                Nova<span>Mix</span>
-            </div>
+        <select id="ordenacao" onchange="mostrarProdutos()">
+            <option value="padrao">Ordenar produtos</option>
+            <option value="menor">Menor preço</option>
+            <option value="maior">Maior preço</option>
+            <option value="nome">Nome A-Z</option>
+        </select>
 
-            <div class="busca">
+    </div>
+</div>
 
-                <input
-                    type="text"
-                    id="campoBusca"
-                    placeholder="O que você está procurando?"
-                    oninput="buscarProdutos()"
-                >
+<div class="categorias">
+    <button onclick="filtrarCategoria('Todos')">Todos</button>
+    <button onclick="filtrarCategoria('Perfume')">Perfumes</button>
+    <button onclick="filtrarCategoria('Eletrônicos')">Eletrônicos</button>
+    <button onclick="filtrarCategoria('Acessórios')">Acessórios</button>
+    <button onclick="filtrarCategoria('Beleza')">Beleza</button>
+</div>
 
-                <span class="icone-busca">🔍</span>
+<div class="promocao">
+    <strong>🔥 OFERTA ESPECIAL</strong>
+    <br>
+    <span>20% de desconto em todos os produtos!</span>
+</div>
 
-            </div>
+<div class="produtos" id="listaProdutos"></div>
 
-            <div class="acoes">
+<div class="carrinho" onclick="abrirCarrinho()">
+    🛒 Carrinho (<span id="quantidadeCarrinho">0</span>)
+</div>
 
-                <button
-                    class="btn-carrinho"
-                    onclick="abrirCarrinho()"
-                >
+<div class="modal" id="modalCarrinho">
 
-                    🛒 Carrinho
+    <div class="modal-conteudo">
 
-                    <span id="contadorCarrinho">
-                        0
-                    </span>
-
-                </button>
-
-            </div>
-
+        <div class="modal-topo">
+            <h2>🛒 Seu Carrinho</h2>
+            <span class="fechar" onclick="fecharCarrinho()">×</span>
         </div>
 
-    </header>
+        <div id="itensCarrinho"></div>
 
-
-    <!-- =========================
-         CATEGORIAS
-    ========================= -->
-
-    <nav class="categorias">
-
-        <div class="categorias-container">
-
-            <button
-                class="categoria ativa"
-                onclick="filtrarCategoria('Todos', this)"
-            >
-                Todos
-            </button>
-
-            <button
-                class="categoria"
-                onclick="filtrarCategoria('Perfumes', this)"
-            >
-                🌸 Perfumes
-            </button>
-
-            <button
-                class="categoria"
-                onclick="filtrarCategoria('Celulares', this)"
-            >
-                📱 Celulares
-            </button>
-
-            <button
-                class="categoria"
-                onclick="filtrarCategoria('Eletrônicos', this)"
-            >
-                🎧 Eletrônicos
-            </button>
-
-            <button
-                class="categoria"
-                onclick="filtrarCategoria('Eletrodomésticos', this)"
-            >
-                🏠 Eletrodomésticos
-            </button>
-
+        <div class="total">
+            Total: R$ <span id="totalCarrinho">0,00</span>
         </div>
 
-    </nav>
+        <button class="whatsapp" onclick="finalizarWhatsApp()">
+            📱 Finalizar pedido pelo WhatsApp
+        </button>
+
+    </div>
+
+</div>
+
+<footer>
+    <p>Produtos Importados © 2026</p>
+    <p>20% OFF em todos os produtos</p>
+</footer>
+
+<script>
+
+    // =========================
+    // WHATSAPP
+    // =========================
+
+    const WHATSAPP = "5511970218569";
+
+
+    // =========================
+    // PRODUTOS
+    // =========================
+
+    const produtos = [
+
+        {
+            id: 1,
+            nome: "212 VIP Men",
+            categoria: "Perfume",
+            preco: 399.90,
+            imagem: "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=800&q=80",
+            descricao: "Perfume masculino importado."
+        },
+
+        {
+            id: 2,
+            nome: "212 VIP Black",
+            categoria: "Perfume",
+            preco: 449.90,
+            imagem: "https://images.unsplash.com/photo-1547887538-e3a2f32cb1cc?auto=format&fit=crop&w=800&q=80",
+            descricao: "Fragrância masculina marcante."
+        },
+
+        {
+            id: 3,
+            nome: "212 Men NYC",
+            categoria: "Perfume",
+            preco: 379.90,
+            imagem: "https://images.unsplash.com/photo-1587017539504-67cfbddac569?auto=format&fit=crop&w=800&q=80",
+            descricao: "Perfume masculino sofisticado."
+        },
+
+        {
+            id: 4,
+            nome: "Perfume Importado Classic",
+            categoria: "Perfume",
+            preco: 329.90,
+            imagem: "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=800&q=80",
+            descricao: "Fragrância elegante para diversas ocasiões."
+        },
+
+        {
+            id: 5,
+            nome: "Perfume Black Edition",
+            categoria: "Perfume",
+            preco: 429.90,
+            imagem: "https://images.unsplash.com/photo-1619994403073-2cec844b8e63?auto=format&fit=crop&w=800&q=80",
+            descricao: "Fragrância intensa e sofisticada."
+        },
+
+        {
+            id: 6,
+            nome: "Smartwatch Series",
+            categoria: "Eletrônicos",
+            preco: 299.90,
+            imagem: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80",
+            descricao: "Smartwatch moderno para o dia a dia."
+        },
+
+        {
+            id: 7,
+            nome: "Fone Bluetooth Pro",
+            categoria: "Eletrônicos",
+            preco: 249.90,
+            imagem: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80",
+            descricao: "Fone sem fio com excelente qualidade sonora."
+        },
+
+        {
+            id: 8,
+            nome: "Headphone Wireless",
+            categoria: "Eletrônicos",
+            preco: 349.90,
+            imagem: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80",
+            descricao: "Headphone confortável e moderno."
+        },
+
+        {
+            id: 9,
+            nome: "Caixa de Som Bluetooth",
+            categoria: "Eletrônicos",
+            preco: 279.90,
+            imagem: "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?auto=format&fit=crop&w=800&q=80",
+            descricao: "Caixa de som portátil Bluetooth."
+        },
+
+        {
+            id: 10,
+            nome: "Óculos de Sol Premium",
+            categoria: "Acessórios",
+            preco: 199.90,
+            imagem: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=800&q=80",
+            descricao: "Óculos de sol com visual moderno."
+        },
+
+        {
+            id: 11,
+            nome: "Relógio Masculino Premium",
+            categoria: "Acessórios",
+            preco: 499.90,
+            imagem: "https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=800&q=80",
+            descricao: "Relógio masculino elegante."
+        },
 
+        {
+            id: 12,
+            nome: "Carteira Masculina",
+            categoria: "Acessórios",
+            preco: 149.90,
+            imagem: "https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&w=800&q=80",
+            descricao: "Carteira compacta e sofisticada."
+        },
 
-    <!-- =========================
-         BANNER
-    ========================= -->
+        {
+            id: 13,
+            nome: "Kit Cuidados Masculinos",
+            categoria: "Beleza",
+            preco: 189.90,
+            imagem: "https://images.unsplash.com/photo-1556228578-8c89e6adf883?auto=format&fit=crop&w=800&q=80",
+            descricao: "Kit para cuidados pessoais."
+        },
 
-    <section class="hero">
+        {
+            id: 14,
+            nome: "Kit Skincare Premium",
+            categoria: "Beleza",
+            preco: 229.90,
+            imagem: "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=800&q=80",
+            descricao: "Produtos para rotina de cuidados."
+        },
 
-        <div class="banner">
+        {
+            id: 15,
+            nome: "Kit Perfume + Hidratante",
+            categoria: "Beleza",
+            preco: 359.90,
+            imagem: "https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?auto=format&fit=crop&w=800&q=80",
+            descricao: "Kit especial com perfume e hidratante."
+        }
 
-            <div class="banner-texto">
+    ];
 
-                <h1>
-                    Tecnologia,<br>
-                    <span>perfumes & muito mais.</span>
-                </h1>
 
-                <p>
-                    Produtos selecionados, preços especiais
-                    e novidades todos os dias na NovaMix.
-                </p>
+    // =========================
+    // DESCONTO
+    // =========================
 
-                <button
-                    class="btn-banner"
-                    onclick="document.getElementById('produtos').scrollIntoView({behavior:'smooth'})"
-                >
-                    Comprar agora →
-                </button>
+    const DESCONTO = 0.20;
 
-            </div>
 
-        </div>
+    // =========================
+    // CARRINHO
+    // =========================
 
-    </section>
+    let carrinho = [];
 
+    let categoriaAtual = "Todos";
 
-    <!-- =========================
-         BENEFÍCIOS
-    ========================= -->
 
-    <section class="beneficios">
+    // =========================
+    // CALCULAR PREÇO
+    // =========================
 
-        <div class="beneficio">
+    function precoComDesconto(preco) {
 
-            <div class="beneficio-icon">
-                🚚
-            </div>
+        return preco * (1 - DESCONTO);
 
-            <div>
-                <strong>Envio rápido</strong>
-                <small>Enviamos para todo Brasil</small>
-            </div>
+    }
 
-        </div>
 
+    // =========================
+    // FORMATAÇÃO
+    // =========================
 
-        <div class="beneficio">
+    function dinheiro(valor) {
 
-            <div class="beneficio-icon">
-                🔒
-            </div>
+        return valor.toLocaleString("pt-BR", {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        });
 
-            <div>
-                <strong>Compra segura</strong>
-                <small>Seus dados protegidos</small>
-            </div>
+    }
 
-        </div>
 
+    // =========================
+    // MOSTRAR PRODUTOS
+    // =========================
 
-        <div class="beneficio">
+    function mostrarProdutos() {
 
-            <div class="beneficio-icon">
-                💳
-            </div>
+        const lista = document.getElementById("listaProdutos");
 
-            <div>
-                <strong>Pagamento fácil</strong>
-                <small>Pix e cartão</small>
-            </div>
+        const pesquisa =
+            document.getElementById("pesquisa").value.toLowerCase();
 
-        </div>
+        const ordenacao =
+            document.getElementById("ordenacao").value;
 
 
-        <div class="beneficio">
+        let produtosFiltrados = produtos.filter(produto => {
 
-            <div class="beneficio-icon">
-                ⭐
-            </div>
+            const correspondeCategoria =
+                categoriaAtual === "Todos" ||
+                produto.categoria === categoriaAtual;
 
-            <div>
-                <strong>Produtos selecionados</strong>
-                <small>Qualidade e variedade</small>
-            </div>
+            const correspondePesquisa =
+                produto.nome.toLowerCase().includes(pesquisa) ||
+                produto.categoria.toLowerCase().includes(pesquisa);
 
-        </div>
+            return correspondeCategoria && correspondePesquisa;
 
-    </section>
+        });
 
 
-    <!-- =========================
-         PRODUTOS
-    ========================= -->
+        // ORDENAÇÃO
 
-    <main
-        class="container"
-        id="produtos"
-    >
+        if (ordenacao === "menor") {
 
-        <div class="titulo-secao">
+            produtosFiltrados.sort(
+                (a, b) =>
+                precoComDesconto(a.preco) -
+                precoComDesconto(b.preco)
+            );
 
-            <div>
+        }
 
-                <h2>
-                    🔥 Produtos em destaque
-                </h2>
+        if (ordenacao === "maior") {
 
-                <p style="color:#6b7280;margin-top:5px">
-                    Encontre seus próximos favoritos
-                </p>
+            produtosFiltrados.sort(
+                (a, b) =>
+                precoComDesconto(b.preco) -
+                precoComDesconto(a.preco)
+            );
 
-            </div>
+        }
 
+        if (ordenacao === "nome") {
 
-            <select
-                class="ordenacao"
-                onchange="ordenarProdutos(this.value)"
-            >
-
-                <option value="padrao">
-                    Mais relevantes
-                </option>
-
-                <option value="menor">
-                    Menor preço
-                </option>
-
-                <option value="maior">
-                    Maior preço
-                </option>
-
-            </select>
-
-        </div>
-
-
-        <div
-            class="produtos"
-            id="listaProdutos"
-        ></div>
-
-    </main>
-
-
-    <!-- =========================
-         CARRINHO
-    ========================= -->
-
-    <div
-        class="overlay"
-        id="overlay"
-        onclick="fecharCarrinho()"
-    ></div>
-
-
-    <aside
-        class="carrinho"
-        id="carrinho"
-    >
-
-        <div class="carrinho-topo">
-
-            <div>
-
-                <h2>
-                    🛒 Meu Carrinho
-                </h2>
-
-                <small>
-                    Confira seus produtos
-                </small>
-
-            </div>
-
-            <button
-                class="fechar"
-                onclick="fecharCarrinho()"
-            >
-                ×
-            </button>
-
-        </div>
-
-
-        <div
-            class="itens-carrinho"
-            id="itensCarrinho"
-        ></div>
-
-
-        <div class="carrinho-rodape">
-
-            <div class="subtotal">
-
-                <span>
-                    Total
-                </span>
-
-                <span id="totalCarrinho">
-                    R$ 0,00
-                </span>
-
-            </div>
-
-
-            <button
-                class="btn-finalizar"
-                onclick="finalizarPedido()"
-            >
-                💬 Finalizar pedido pelo WhatsApp
-            </button>
-
-
-            <button
-                class="btn-compartilhar"
-                onclick="compartilharCarrinho()"
-            >
-                🔗 Compartilhar carrinho
-            </button>
-
-        </div>
-
-    </aside>
-
-
-    <!-- =========================
-         FOOTER
-    ========================= -->
-
-    <footer>
-
-        <div class="footer-container">
-
-            <div>
-
-                <h3>
-                    NovaMix
-                </h3>
-
-                <p>
-                    Perfumes importados, celulares,
-                    eletrônicos e eletrodomésticos
-                    em um só lugar.
-                </p>
-
-            </div>
-
-
-            <div>
-
-                <h3>
-                    Comprar
-                </h3>
-
-                <ul>
-
-                    <li>
-                        Perfumes
-                    </li>
-
-                    <li>
-                        Celulares
-                    </li>
-
-                    <li>
-                        Eletrônicos
-                    </li>
-
-                    <li>
-                        Eletrodomésticos
-                    </li>
-
-                </ul>
-
-            </div>
-
-
-            <div>
-
-                <h3>
-                    Atendimento
-                </h3>
-
-                <ul>
-
-                    <li>
-                        WhatsApp
-                    </li>
-
-                    <li>
-                        Instagram
-                    </li>
-
-                    <li>
-                        Política de troca
-                    </li>
-
-                    <li>
-                        Privacidade
-                    </li>
-
-                </ul>
-
-            </div>
-
-
-            <div>
-
-                <h3>
-                    Pagamento
-                </h3>
-
-                <p>
-                    💳 Cartão
-                </p>
-
-                <p>
-                    💚 Pix
-                </p>
-
-                <p>
-                    🔒 Compra segura
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="copyright">
-
-            ©️ 2026 NovaMix — Todos os direitos reservados.
-
-        </div>
-
-    </footer>
-
-
-    <!-- =========================
-         JAVASCRIPT
-    ========================= -->
-
-    <script>
-
-        /* =========================
-           WHATSAPP
-        ========================= */
-
-        const WHATSAPP = "5511970218569";
-
-
-        /* =========================
-           PRODUTOS
-        ========================= */
-
-        const produtos = [
-
-            {
-                id: 1,
-                nome: "Apple iPhone 16 128GB",
-                categoria: "Celulares",
-                preco: 4599.90,
-                antigo: 5299.90,
-                nota: 5,
-                imagem: "https://images.unsplash.com/photo-1592286927505-2fd0d6f3a5b9?auto=format&fit=crop&w=700&q=80",
-                badge: "OFERTA"
-            },
-
-            {
-                id: 2,
-                nome: "Samsung Galaxy S25",
-                categoria: "Celulares",
-                preco: 3999.90,
-                antigo: 4499.90,
-                nota: 5,
-                imagem: "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=700&q=80",
-                badge: "NOVO"
-            },
-
-            {
-                id: 3,
-                nome: "Xiaomi Redmi Note 14",
-                categoria: "Celulares",
-                preco: 1599.90,
-                antigo: 1899.90,
-                nota: 4,
-                imagem: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=700&q=80",
-                badge: "OFERTA"
-            },
-
-            {
-                id: 4,
-                nome: "Dior Sauvage Eau de Parfum",
-                categoria: "Perfumes",
-                preco: 769.90,
-                antigo: 899.90,
-                nota: 5,
-                imagem: "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=700&q=80",
-                badge: "TOP"
-            },
-
-            {
-                id: 5,
-                nome: "Carolina Herrera Good Girl",
-                categoria: "Perfumes",
-                preco: 580.00,
-                antigo: 699.90,
-                nota: 5,
-                imagem: "https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=700&q=80",
-                badge: "OFERTA"
-            },
-
-            {
-                id: 6,
-                nome: "Paco Rabanne 1 Million",
-                categoria: "Perfumes",
-                preco: 499.90,
-                antigo: 599.90,
-                nota: 5,
-                imagem: "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=700&q=80",
-                badge: "TOP"
-            },
-
-            {
-                id: 7,
-                nome: "Apple AirPods Pro",
-                categoria: "Eletrônicos",
-                preco: 1699.00,
-                antigo: 1999.90,
-                nota: 5,
-                imagem: "https://images.unsplash.com/photo-1588423771073-b8903fbb85b5?auto=format&fit=crop&w=700&q=80",
-                badge: "OFERTA"
-            },
-
-            {
-                id: 8,
-                nome: "PlayStation 5 Slim",
-                categoria: "Eletrônicos",
-                preco: 4299.90,
-                antigo: 4799.90,
-                nota: 5,
-                imagem: "https://images.unsplash.com/photo-1606813907291-d86efa9b94db?auto=format&fit=crop&w=700&q=80",
-                badge: "TOP"
-            },
-
-            {
-                id: 9,
-                nome: "Apple Watch Series",
-                categoria: "Eletrônicos",
-                preco: 2199.90,
-                antigo: 2599.90,
-                nota: 4,
-                imagem: "https://images.unsplash.com/photo-1544117519-31a4b719223d?auto=format&fit=crop&w=700&q=80",
-                badge: "NOVO"
-            },
-
-            {
-                id: 10,
-                nome: 'Smart TV 50" 4K',
-                categoria: "Eletrodomésticos",
-                preco: 2349.90,
-                antigo: 2799.90,
-                nota: 5,
-                imagem: "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?auto=format&fit=crop&w=700&q=80",
-                badge: "OFERTA"
-            },
-
-            {
-                id: 11,
-                nome: "Air Fryer Digital 5L",
-                categoria: "Eletrodomésticos",
-                preco: 399.90,
-                antigo: 499.90,
-                nota: 5,
-                imagem: "https://images.unsplash.com/photo-1585515320310-259814833e62?auto=format&fit=crop&w=700&q=80",
-                badge: "OFERTA"
-            },
-
-            {
-                id: 12,
-                nome: "Robô Aspirador Inteligente",
-                categoria: "Eletrodomésticos",
-                preco: 899.90,
-                antigo: 1099.90,
-                nota: 4,
-                imagem: "https://images.unsplash.com/photo-1585771724684-38269d6639fd?auto=format&fit=crop&w=700&q=80",
-                badge: "NOVO"
-            }
-
-        ];
-
-
-        /* =========================
-           CARRINHO
-        ========================= */
-
-        let carrinho = JSON.parse(
-            localStorage.getItem("novamix_carrinho") || "[]"
-        );
-
-        let categoriaAtual = "Todos";
-
-        let buscaAtual = "";
-
-
-        /* =========================
-           FORMATAÇÃO
-        ========================= */
-
-        function dinheiro(valor) {
-
-            return valor.toLocaleString("pt-BR", {
-                style: "currency",
-                currency: "BRL"
-            });
+            produtosFiltrados.sort(
+                (a, b) =>
+                a.nome.localeCompare(b.nome)
+            );
 
         }
 
 
-        /* =========================
-           RENDERIZAR PRODUTOS
-        ========================= */
-
-        function renderProdutos(lista = produtos) {
-
-            const container =
-                document.getElementById("listaProdutos");
+        lista.innerHTML = "";
 
 
-            if (!lista.length) {
+        if (produtosFiltrados.length === 0) {
 
-                container.innerHTML = `
+            lista.innerHTML = `
+                <div class="vazio">
+                    <h2>Nenhum produto encontrado</h2>
+                    <p>Tente outra busca.</p>
+                </div>
+            `;
 
-                    <div style="
-                        grid-column:1/-1;
-                        text-align:center;
-                        padding:60px;
-                        background:white;
-                        border-radius:20px;
-                    ">
+            return;
 
-                        <div style="font-size:50px">
-                            🔎
-                        </div>
+        }
 
-                        <h3>
-                            Nenhum produto encontrado
-                        </h3>
 
-                        <p style="color:#6b7280;margin-top:8px">
-                            Tente procurar por outro produto.
-                        </p>
+        produtosFiltrados.forEach(produto => {
 
+            const precoFinal =
+                precoComDesconto(produto.preco);
+
+
+            lista.innerHTML += `
+
+                <div class="produto">
+
+                    <div class="desconto">
+                        20% OFF
                     </div>
 
-                `;
+                    <img
+                        src="${produto.imagem}"
+                        alt="${produto.nome}"
+                    >
 
-                return;
-            }
+                    <div class="info">
 
-
-            container.innerHTML = lista.map(produto => `
-
-                <article class="produto">
-
-                    ${
-                        produto.badge
-                        ? `<span class="badge">${produto.badge}</span>`
-                        : ""
-                    }
-
-                    <div class="produto-img">
-
-                        <img
-                            src="${produto.imagem}"
-                            alt="${produto.nome}"
-                            loading="lazy"
-                            onerror="this.src='https://placehold.co/600x600/eee/555?text=Produto'"
-                        >
-
-                    </div>
-
-
-                    <div class="produto-info">
-
-                        <div class="categoria-produto">
+                        <div class="categoria">
                             ${produto.categoria}
                         </div>
 
-
-                        <h3>
+                        <h2>
                             ${produto.nome}
-                        </h3>
+                        </h2>
 
-
-                        <div class="estrelas">
-
-                            ${"★".repeat(produto.nota)}
-                            ${"☆".repeat(5 - produto.nota)}
-
+                        <div class="descricao">
+                            ${produto.descricao}
                         </div>
-
 
                         <div class="preco-antigo">
-                            ${dinheiro(produto.antigo)}
+                            De: R$ ${dinheiro(produto.preco)}
                         </div>
-
 
                         <div class="preco">
-                            ${dinheiro(produto.preco)}
+                            R$ ${dinheiro(precoFinal)}
                         </div>
-
-
-                        <div class="pix">
-                            💚 À vista no Pix
-                        </div>
-
 
                         <button
-                            class="btn-comprar"
+                            class="botao"
                             onclick="adicionarCarrinho(${produto.id})"
                         >
-
                             🛒 Adicionar ao carrinho
-
                         </button>
 
                     </div>
 
-                </article>
+                </div>
 
-            `).join("");
+            `;
 
-        }
+        });
 
-
-        /* =========================
-           FILTRO
-        ========================= */
-
-        function filtrarCategoria(categoria, botao) {
-
-            categoriaAtual = categoria;
+    }
 
 
-            document
-                .querySelectorAll(".categoria")
-                .forEach(btn => {
-                    btn.classList.remove("ativa");
-                });
+    // =========================
+    // FILTRO DE CATEGORIA
+    // =========================
+
+    function filtrarCategoria(categoria) {
+
+        categoriaAtual = categoria;
+
+        mostrarProdutos();
+
+    }
 
 
-            botao.classList.add("ativa");
+    // =========================
+    // ADICIONAR AO CARRINHO
+    // =========================
+
+    function adicionarCarrinho(id) {
+
+        const produto =
+            produtos.find(p => p.id === id);
 
 
-            aplicarFiltros();
-
-        }
-
-
-        function buscarProdutos() {
-
-            buscaAtual =
-                document
-                    .getElementById("campoBusca")
-                    .value
-                    .toLowerCase();
+        const itemExistente =
+            carrinho.find(item => item.id === id);
 
 
-            aplicarFiltros();
+        if (itemExistente) {
 
-        }
+            itemExistente.quantidade++;
 
+        } else {
 
-        function aplicarFiltros() {
+            carrinho.push({
 
-            let lista = produtos.filter(produto => {
+                id: produto.id,
 
-                const categoriaOk =
-                    categoriaAtual === "Todos" ||
-                    produto.categoria === categoriaAtual;
+                nome: produto.nome,
 
+                preco: precoComDesconto(produto.preco),
 
-                const buscaOk =
-                    produto.nome
-                        .toLowerCase()
-                        .includes(buscaAtual) ||
-
-                    produto.categoria
-                        .toLowerCase()
-                        .includes(buscaAtual);
-
-
-                return categoriaOk && buscaOk;
+                quantidade: 1
 
             });
 
-
-            renderProdutos(lista);
-
         }
 
-
-        /* =========================
-           ORDENAÇÃO
-        ========================= */
-
-        function ordenarProdutos(tipo) {
-
-            let lista = produtos.filter(produto => {
-
-                const categoriaOk =
-                    categoriaAtual === "Todos" ||
-                    produto.categoria === categoriaAtual;
-
-
-                const buscaOk =
-                    produto.nome
-                        .toLowerCase()
-                        .includes(buscaAtual) ||
-
-                    produto.categoria
-                        .toLowerCase()
-                        .includes(buscaAtual);
-
-
-                return categoriaOk && buscaOk;
-
-            });
-
-
-            if (tipo === "menor") {
-
-                lista.sort(
-                    (a, b) => a.preco - b.preco
-                );
-
-            }
-
-
-            if (tipo === "maior") {
-
-                lista.sort(
-                    (a, b) => b.preco - a.preco
-                );
-
-            }
-
-
-            renderProdutos(lista);
-
-        }
-
-
-        /* =========================
-           SALVAR CARRINHO
-        ========================= */
-
-        function salvarCarrinho() {
-
-            localStorage.setItem(
-                "novamix_carrinho",
-                JSON.stringify(carrinho)
-            );
-
-        }
-
-
-        /* =========================
-           ADICIONAR AO CARRINHO
-        ========================= */
-
-        function adicionarCarrinho(id) {
-
-            const existente =
-                carrinho.find(
-                    item => item.id === id
-                );
-
-
-            if (existente) {
-
-                existente.quantidade++;
-
-            } else {
-
-                carrinho.push({
-                    id: id,
-                    quantidade: 1
-                });
-
-            }
-
-
-            salvarCarrinho();
-
-            atualizarCarrinho();
-
-            abrirCarrinho();
-
-        }
-
-
-        /* =========================
-           ALTERAR QUANTIDADE
-        ========================= */
-
-        function alterarQuantidade(id, quantidade) {
-
-            const item =
-                carrinho.find(
-                    item => item.id === id
-                );
-
-
-            if (!item) return;
-
-
-            item.quantidade += quantidade;
-
-
-            if (item.quantidade <= 0) {
-
-                carrinho =
-                    carrinho.filter(
-                        item => item.id !== id
-                    );
-
-            }
-
-
-            salvarCarrinho();
-
-            atualizarCarrinho();
-
-        }
-
-
-        /* =========================
-           REMOVER PRODUTO
-        ========================= */
-
-        function removerProduto(id) {
-
-            carrinho =
-                carrinho.filter(
-                    item => item.id !== id
-                );
-
-
-            salvarCarrinho();
-
-            atualizarCarrinho();
-
-        }
-
-
-        /* =========================
-           ATUALIZAR CARRINHO
-        ========================= */
-
-        function atualizarCarrinho() {
-
-            const container =
-                document.getElementById(
-                    "itensCarrinho"
-                );
-
-
-            const contador =
-                document.getElementById(
-                    "contadorCarrinho"
-                );
-
-
-            const totalElemento =
-                document.getElementById(
-                    "totalCarrinho"
-                );
-
-
-            let quantidadeTotal = 0;
-
-            let total = 0;
-
-
-            carrinho.forEach(item => {
-
-                const produto =
-                    produtos.find(
-                        p => p.id === item.id
-                    );
-
-
-                if (!produto) return;
-
-
-                quantidadeTotal +=
-                    item.quantidade;
-
-
-                total +=
-                    produto.preco *
-                    item.quantidade;
-
-            });
-
-
-            contador.textContent =
-                quantidadeTotal;
-
-
-            totalElemento.textContent =
-                dinheiro(total);
-
-
-            if (!carrinho.length) {
-
-                container.innerHTML = `
-
-                    <div class="carrinho-vazio">
-
-                        <div>
-                            🛒
-                        </div>
-
-                        <h3>
-                            Seu carrinho está vazio
-                        </h3>
-
-                        <p style="margin-top:8px">
-                            Adicione produtos para começar.
-                        </p>
-
-                    </div>
-
-                `;
-
-                return;
-
-            }
-
-
-            container.innerHTML =
-                carrinho.map(item => {
-
-                    const produto =
-                        produtos.find(
-                            p => p.id === item.id
-                        );
-
-
-                    if (!produto) return "";
-
-
-                    return `
-
-                        <div class="item-carrinho">
-
-                            <img
-                                src="${produto.imagem}"
-                                alt="${produto.nome}"
-                            >
-
-
-                            <div class="item-info">
-
-                                <h4>
-                                    ${produto.nome}
-                                </h4>
-
-
-                                <div class="item-preco">
-                                    ${dinheiro(produto.preco)}
-                                </div>
-
-
-                                <div class="quantidade">
-
-                                    <button
-                                        onclick="alterarQuantidade(${produto.id}, -1)"
-                                    >
-                                        −
-                                    </button>
-
-
-                                    <strong>
-                                        ${item.quantidade}
-                                    </strong>
-
-
-                                    <button
-                                        onclick="alterarQuantidade(${produto.id}, 1)"
-                                    >
-                                        +
-                                    </button>
-
-                                </div>
-
-
-                                <button
-                                    class="remover"
-                                    onclick="removerProduto(${produto.id})"
-                                >
-                                    Remover
-                                </button>
-
-                            </div>
-
-                        </div>
-
-                    `;
-
-                }).join("");
-
-        }
-
-
-        /* =========================
-           ABRIR CARRINHO
-        ========================= */
-
-        function abrirCarrinho() {
-
-            document
-                .getElementById("carrinho")
-                .classList.add("aberto");
-
-
-            document
-                .getElementById("overlay")
-                .classList.add("ativo");
-
-        }
-
-
-        /* =========================
-           FECHAR CARRINHO
-        ========================= */
-
-        function fecharCarrinho() {
-
-            document
-                .getElementById("carrinho")
-                .classList.remove("aberto");
-
-
-            document
-                .getElementById("overlay")
-                .classList.remove("ativo");
-
-        }
-
-
-        /* =========================
-           FINALIZAR PELO WHATSAPP
-        ========================= */
-
-        function finalizarPedido() {
-
-            if (!carrinho.length) {
-
-                alert(
-                    "Seu carrinho está vazio."
-                );
-
-                return;
-
-            }
-
-
-            let mensagem =
-                "Olá! Quero fazer um pedido na NovaMix.%0A%0A";
-
-
-            let total = 0;
-
-
-            carrinho.forEach(item => {
-
-                const produto =
-                    produtos.find(
-                        p => p.id === item.id
-                    );
-
-
-                if (!produto) return;
-
-
-                const subtotal =
-                    produto.preco *
-                    item.quantidade;
-
-
-                total += subtotal;
-
-
-                mensagem +=
-                    `• ${produto.nome} x${item.quantidade} — ${dinheiro(subtotal)}%0A`;
-
-            });
-
-
-            mensagem +=
-                `%0A*Total: ${dinheiro(total)}*`;
-
-
-            const url =
-                `https://wa.me/${WHATSAPP}?text=${mensagem}`;
-
-
-            window.open(
-                url,
-                "_blank"
-            );
-
-        }
-
-
-        /* =========================
-           COMPARTILHAR CARRINHO
-        ========================= */
-
-        function compartilharCarrinho() {
-
-            if (!carrinho.length) {
-
-                alert(
-                    "Seu carrinho está vazio."
-                );
-
-                return;
-
-            }
-
-
-            const dados =
-                btoa(
-                    encodeURIComponent(
-                        JSON.stringify(carrinho)
-                    )
-                );
-
-
-            const url =
-                window.location.origin +
-                window.location.pathname +
-                "?carrinho=" +
-                encodeURIComponent(dados);
-
-
-            if (navigator.share) {
-
-                navigator.share({
-
-                    title:
-                        "Meu carrinho NovaMix",
-
-                    text:
-                        "Confira meu carrinho na NovaMix!",
-
-                    url: url
-
-                });
-
-            } else {
-
-                navigator.clipboard
-                    .writeText(url);
-
-                alert(
-                    "Link do carrinho copiado! Agora é só enviar para a pessoa."
-                );
-
-            }
-
-        }
-
-
-        /* =========================
-           CARREGAR CARRINHO DO LINK
-        ========================= */
-
-        function carregarCarrinhoDoLink() {
-
-            const parametros =
-                new URLSearchParams(
-                    window.location.search
-                );
-
-
-            const dados =
-                parametros.get("carrinho");
-
-
-            if (!dados) return;
-
-
-            try {
-
-                const novoCarrinho =
-                    JSON.parse(
-                        decodeURIComponent(
-                            atob(
-                                decodeURIComponent(dados)
-                            )
-                        )
-                    );
-
-
-                if (Array.isArray(novoCarrinho)) {
-
-                    carrinho =
-                        novoCarrinho;
-
-
-                    salvarCarrinho();
-
-                    atualizarCarrinho();
-
-
-                    setTimeout(() => {
-
-                        alert(
-                            "🛒 Carrinho compartilhado carregado com sucesso!"
-                        );
-
-                        abrirCarrinho();
-
-                    }, 500);
-
-                }
-
-            } catch (erro) {
-
-                console.error(
-                    "Não foi possível carregar o carrinho:",
-                    erro
-                );
-
-            }
-
-        }
-
-
-        /* =========================
-           INICIAR SITE
-        ========================= */
-
-        renderProdutos();
 
         atualizarCarrinho();
 
-        carregarCarrinhoDoLink();
+        alert("Produto adicionado ao carrinho!");
 
-    </script>
+    }
+
+
+    // =========================
+    // REMOVER DO CARRINHO
+    // =========================
+
+    function removerCarrinho(id) {
+
+        carrinho =
+            carrinho.filter(item => item.id !== id);
+
+        atualizarCarrinho();
+
+        mostrarCarrinho();
+
+    }
+
+
+    // =========================
+    // ATUALIZAR CARRINHO
+    // =========================
+
+    function atualizarCarrinho() {
+
+        const quantidade =
+            carrinho.reduce(
+                (total, item) =>
+                total + item.quantidade,
+                0
+            );
+
+
+        document.getElementById(
+            "quantidadeCarrinho"
+        ).textContent = quantidade;
+
+    }
+
+
+    // =========================
+    // ABRIR CARRINHO
+    // =========================
+
+    function abrirCarrinho() {
+
+        document.getElementById(
+            "modalCarrinho"
+        ).style.display = "flex";
+
+
+        mostrarCarrinho();
+
+    }
+
+
+    // =========================
+    // FECHAR CARRINHO
+    // =========================
+
+    function fecharCarrinho() {
+
+        document.getElementById(
+            "modalCarrinho"
+        ).style.display = "none";
+
+    }
+
+
+    // =========================
+    // MOSTRAR CARRINHO
+    // =========================
+
+    function mostrarCarrinho() {
+
+        const container =
+            document.getElementById("itensCarrinho");
+
+        const totalElemento =
+            document.getElementById("totalCarrinho");
+
+
+        container.innerHTML = "";
+
+
+        if (carrinho.length === 0) {
+
+            container.innerHTML = `
+                <p>Seu carrinho está vazio.</p>
+            `;
+
+            totalElemento.textContent = "0,00";
+
+            return;
+
+        }
+
+
+        let total = 0;
+
+
+        carrinho.forEach(item => {
+
+            const subtotal =
+                item.preco * item.quantidade;
+
+            total += subtotal;
+
+
+            container.innerHTML += `
+
+                <div class="item-carrinho">
+
+                    <div>
+
+                        <strong>
+                            ${item.nome}
+                        </strong>
+
+                        <br>
+
+                        Quantidade:
+                        ${item.quantidade}
+
+                        <br>
+
+                        R$ ${dinheiro(subtotal)}
+
+                    </div>
+
+                    <div>
+
+                        <button
+                            onclick="removerCarrinho(${item.id})"
+                        >
+                            Remover
+                        </button>
+
+                    </div>
+
+                </div>
+
+            `;
+
+        });
+
+
+        totalElemento.textContent =
+            dinheiro(total);
+
+    }
+
+
+    // =========================
+    // WHATSAPP
+    // =========================
+
+    function finalizarWhatsApp() {
+
+        if (carrinho.length === 0) {
+
+            alert("Seu carrinho está vazio.");
+
+            return;
+
+        }
+
+
+        let mensagem =
+            "Olá! Gostaria de fazer um pedido:%0A%0A";
+
+
+        let total = 0;
+
+
+        carrinho.forEach(item => {
+
+            const subtotal =
+                item.preco * item.quantidade;
+
+            total += subtotal;
+
+
+            mensagem +=
+                `• ${item.nome} - Quantidade: ${item.quantidade} - R$ ${dinheiro(subtotal)}%0A`;
+
+        });
+
+
+        mensagem +=
+            `%0A*Total: R$ ${dinheiro(total)}*`;
+
+
+
+        const url =
+            `https://wa.me/${WHATSAPP}?text=${mensagem}`;
+
+
+        window.open(url, "_blank");
+
+    }
+
+
+    // =========================
+    // INICIAR SITE
+    // =========================
+
+    mostrarProdutos();
+
+    atualizarCarrinho();
+
+</script>
 
 </body>
-
 </html>
